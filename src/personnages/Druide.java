@@ -1,10 +1,13 @@
 package personnages;
 
-public class Romain {
+import objets.Chaudron;
+
+public class Druide {
 	private String nom;
 	private int force;
+	private Chaudron chaudron = new Chaudron();
 
-	public Romain(String nom, int force) {
+	public Druide(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
 	}
@@ -18,17 +21,6 @@ public class Romain {
 	}
 
 	private String prendreParole() {
-		return "Le romain " + nom + " : ";
+		return "Le Druide " + nom + " : ";
 	}
-
-	public void recevoirCoup(int forceCoup) {
-		force = force - forceCoup;
-		if (force < 1) {
-			parler("J'abandonne !");
-		} else {
-			parler("Aie !");
-		}
-
-	}
-
 }
