@@ -2,16 +2,27 @@ package personnages;
 
 import village.Village;
 
-
-	public Gaulois(String nom, int force) 
+public class Gaulois{
+	
+	String nom;
+	int force;
+	Village village;
+	
+	public Gaulois(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
-		this.village = null}
+		this.village = null;
+	}
 	
 	public String getNom() {
 		return nom;
 	}
 
+	private void setVillage(Village village2) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}
@@ -38,7 +49,6 @@ import village.Village;
 			System.out.println("J'habite le village " + village.getNom() + ".\"");
 		}
 	}
-}
 
 public static void main(String[] args) {
     Gaulois abraracourcix = new Gaulois("Abraracourcix", 6);
@@ -61,4 +71,7 @@ public static void main(String[] args) {
     abraracourcix.sePresenter();
     asterix.sePresenter();
     doublepolemix.sePresenter();
+}
+
+
 }

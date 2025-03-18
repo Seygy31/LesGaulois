@@ -16,6 +16,10 @@ public class Village {
 		villageois = new Gaulois[nbVillageoisMax];
 	}
 
+	public Gaulois getChef() {
+		return chef;
+	}
+	
 	public String getNom() {
 		return nom;
 	}
