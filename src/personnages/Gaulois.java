@@ -1,43 +1,48 @@
 package personnages;
 
+import objets.Equipement;
 import village.Village;
 
-public class Gaulois{
-	
-	String nom;
-	int force;
-	Village village;
-	
+public class Gaulois {
+	private String nom;
+	private int force;
+	private Village village;
+	private int nbTrophees;
+	private Equipement[] loot = new Equipement[100];
+	private int effetPotion;
+
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
 		this.village = null;
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
 
 	private void setVillage(Village village2) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}
 
 	private String prendreParole() {
 		return "Le gaulois " + nom + " : ";
+
 	}
 
 	public void frapper(Romain romain) {
-		String nomRomain = romain.getNom();
-		System.out.println(nom + " envoie un grand coup dans la m�choire de " + nomRomain);
-		int forceCoup = force / 3;
-		romain.recevoirCoup(forceCoup);
-	}
+		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
+		Equipement[] loot = romain.recevoirCoup((force / 3) * effetPotion);
+		for (int i = 0; loot != null && i < loot.length; i++, nbTrophees++) {
+			this.loot[nbTrophees] = loot[i];
+		}
 
+	}
 
 	public void sePresenter() {
 		System.out.print("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom + ". ");
@@ -50,28 +55,26 @@ public class Gaulois{
 		}
 	}
 
-public static void main(String[] args) {
-    Gaulois abraracourcix = new Gaulois("Abraracourcix", 6);
-    Village village = new Village("Village des Irréductibles", 30, abraracourcix);
-    abraracourcix.setVillage(village); // Définition du village du chef
+	public static void main(String[] args) {
+		Gaulois abraracourcix = new Gaulois("Abraracourcix", 6);
+		Village village = new Village("Village des Irréductibles", 30, abraracourcix);
+		abraracourcix.setVillage(village);
 
-    Gaulois asterix = new Gaulois("Astérix", 8);
-    village.ajouterVillageois(asterix);
-    asterix.setVillage(village); // Définition du village d'Astérix
+		Gaulois asterix = new Gaulois("Astérix", 8);
+		village.ajouterVillageois(asterix);
+		asterix.setVillage(village);
 
-    Gaulois obelix = new Gaulois("Obélix", 25);
-    village.ajouterVillageois(obelix);
-    obelix.setVillage(village); // Définition du village d'Obélix
+		Gaulois obelix = new Gaulois("Obélix", 25);
+		village.ajouterVillageois(obelix);
+		obelix.setVillage(village);
 
-    village.afficherVillageois(); // Vérification qu'Obélix apparaît bien
+		village.afficherVillageois();
 
-    Gaulois doublepolemix = new Gaulois("DoublePolémix", 4); // Pas de village
+		Gaulois doublepolemix = new Gaulois("DoublePolémix", 4);
 
-    // Présentation des Gaulois
-    abraracourcix.sePresenter();
-    asterix.sePresenter();
-    doublepolemix.sePresenter();
-}
-
+		abraracourcix.sePresenter();
+		asterix.sePresenter();
+		doublepolemix.sePresenter();
+	}
 
 }

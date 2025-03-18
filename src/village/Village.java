@@ -19,7 +19,7 @@ public class Village {
 	public Gaulois getChef() {
 		return chef;
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
@@ -37,7 +37,7 @@ public class Village {
 		if (numVillageois <= 0 || numVillageois > nbVillageois) {
 			System.out.println("Il n’y a pas autant d'habitants dans notre village !");
 			return null;
-		} 
+		}
 		return villageois[numVillageois - 1]; // Ajustement car l'index commence à 0
 	}
 
